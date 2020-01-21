@@ -1,9 +1,10 @@
 package com.codercat.community.controller;
 
-import com.codercat.community.mapper.QuestionMapper;
+import com.codercat.community.dto.QuestionDTO;
 import com.codercat.community.mapper.UserMapper;
 import com.codercat.community.model.Question;
 import com.codercat.community.model.User;
+import com.codercat.community.service.QuestionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +27,7 @@ public class IndexController {
     private UserMapper userMapper;
 
     @Resource
-    private QuestionMapper questionMapper;
+    private QuestionService questionService;
 
     @GetMapping("/")
     public String index(HttpServletRequest request, Model model) {
@@ -44,8 +45,8 @@ public class IndexController {
                 }
             }
         }
-        List<Question> questionList = questionMapper.list();
-        model.addAttribute("questionList",questionList);
+        List<QuestionDTO> questionList = questionService.list();
+        model.addAttribute("questionList", questionList);
         return "index";
     }
 }
