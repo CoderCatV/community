@@ -18,7 +18,8 @@ public interface UserMapper {
      * 插入数据
      * @param user
      */
-    @Insert("insert into user (account_id,name,token,gmt_create,gmt_modified) values (#{accountId},#{name},#{token},#{gmtCreate},#{gmtModified})")
+    @Insert("insert into user (account_id,name,token,gmt_create,gmt_modified,avatar_url) " +
+            "values (#{accountId},#{name},#{token},#{gmtCreate},#{gmtModified},#{avatarUrl})")
     void insert(User user);
 
     /**
